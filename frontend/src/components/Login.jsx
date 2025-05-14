@@ -20,32 +20,22 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-20">
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 p-4 shadow rounded bg-white"
-      >
-        <h2 className="text-xl font-semibold">Login</h2>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <h2>Login</h2>
         <input
           type="text"
           placeholder="Username"
-          className="w-full p-2 border"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
-          className="w-full p-2 border"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 w-full"
-        >
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
