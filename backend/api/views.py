@@ -37,6 +37,9 @@ class TransactionList(generics.ListCreateAPIView):
             qs = qs.filter(amount__lte=max_amount)
 
         return qs
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class TransactionDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TransactionSerializer

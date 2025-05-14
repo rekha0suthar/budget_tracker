@@ -52,7 +52,7 @@ const FinancialSummary = () => {
       { label: 'Balance', value: summary.balance, color: '#2ecc71' },
     ];
 
-    const width = 350;
+    const width = 400;
     const height = 300;
     const radius = Math.min(width, height) / 2;
 
@@ -109,7 +109,7 @@ const FinancialSummary = () => {
       { label: 'Expenses', value: summary.expense, color: '#e74c3c' },
     ];
 
-    const width = 400;
+    const width = 500;
     const height = 300;
 
     const svg = select(barRef.current);

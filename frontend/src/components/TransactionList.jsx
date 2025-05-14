@@ -76,7 +76,9 @@ export default function TransactionList({ onEdit }) {
           value={filters.max_amount}
           onChange={handleFilterChange}
         />
-        <button onClick={handleApplyFilters}>Apply</button>
+        <button className="margin" onClick={handleApplyFilters}>
+          Apply
+        </button>
       </div>
 
       {/* Transactions Table */}

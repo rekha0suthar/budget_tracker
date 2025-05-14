@@ -192,6 +192,11 @@ button:hover {
   width: 100%;
 }
 
+.margin {
+  margin-top: 10px;
+  margin-bottom: 20px !important;
+}
+
 /* Scroll only the table, not the whole wrapper */
 .table-scroll {
   width: 100%;
