@@ -20,7 +20,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-auto">
       <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         <input

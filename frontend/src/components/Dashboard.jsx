@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TransactionForm from './TransactionForm';
 import TransactionList from './TransactionList';
-import BudgetOverview from './BudgetOverview';
+import BudgetForm from './BudgetForm';
 import FinancialSummary from './FinanceSummary';
 
 export default function Dashboard() {
@@ -15,11 +15,10 @@ export default function Dashboard() {
       <div className="navbar">Personal Budget Tracker</div>
 
       <div className="dashboard-container">
-        <FinancialSummary />
-
-        {/* <div className="section">
-          <BudgetOverview />
-        </div> */}
+        <div className="summary">
+          <FinancialSummary />
+          <BudgetForm />
+        </div>
 
         <div className="dashboard-body">
           <div className="dashboard-left section">
@@ -35,8 +34,6 @@ export default function Dashboard() {
               onClearEdit={() => setEditTxn(null)}
               onSuccess={reloadTransactions}
             />
-
-            <BudgetOverview />
           </div>
         </div>
       </div>

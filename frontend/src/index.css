@@ -4,6 +4,7 @@ body {
   background-color: #f8f9fa;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .container {
@@ -13,6 +14,10 @@ body {
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mt-auto {
+  margin: 40px auto;
 }
 
 h2 {
@@ -92,7 +97,7 @@ button:hover {
 
 /* Navbar */
 .navbar {
-  background-color: #1e2a38;
+  background-color: #007bff;
   color: white;
   padding: 15px 30px;
   font-size: 1.5rem;
@@ -107,6 +112,11 @@ button:hover {
   padding: 20px;
 }
 
+.summary {
+  display: flex;
+  gap: 30px;
+}
+
 /* Section Wrapper */
 .section {
   background: white;
@@ -114,13 +124,14 @@ button:hover {
   margin-bottom: 25px;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
 }
 
 /* Flex Layout for Main Body */
 .dashboard-body {
   display: flex;
   gap: 30px;
-  align-items: flex-start;
+  /* align-items: flex-start; */
 }
 
 /* Left: Table | Right: Forms */
@@ -133,6 +144,14 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
 }
 
 .transaction-table th,
@@ -154,9 +173,109 @@ button:hover {
   padding: 20px;
 }
 
+.budget {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.finance-container {
+  display: flex;
+  gap: 100px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+/* Parent container - for padding or background */
+.table-wrapper {
+  width: 100%;
+}
+
+/* Scroll only the table, not the whole wrapper */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+}
+
+/* Table stays wide, triggers scroll only inside .table-scroll */
+.transaction-table {
+  min-width: 700px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.transaction-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.transaction-filter-group {
+  display: flex;
+  gap: 10px;
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pag-btn {
+  color: black !important;
+  cursor: pointer;
+  background: transparent;
+  width: auto;
+  border: none;
+}
+
+.finance-container svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .dashboard-body {
     flex-direction: column;
+  }
+
+  .finance-container {
+    flex-direction: column;
+  }
+
+  .summary {
+    flex-direction: column;
+  }
+
+  .transaction-filter-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .transaction-table th,
+  .transaction-table td {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .section {
+    max-width: 100%;
+  }
+
+  .navbar {
+    font-size: 20px;
   }
 }

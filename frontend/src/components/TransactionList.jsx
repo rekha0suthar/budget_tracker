@@ -18,7 +18,7 @@ export default function TransactionList({ onEdit }) {
     const res = await fetchTransactions(p, filters);
     setTransactions(res.results);
     setPage(p);
-    setTotalPages(Math.ceil(res.count / 3)); // match PAGE_SIZE
+    setTotalPages(Math.ceil(res.count / 5)); // match PAGE_SIZE
   };
 
   const handleDelete = async (id) => {
@@ -39,11 +39,11 @@ export default function TransactionList({ onEdit }) {
   }, []);
 
   return (
-    <div>
+    <div className="table-wrapper">
       <h2>Transactions</h2>
 
       {/* Filter Form */}
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+      <div className="transaction-filter-group">
         <input
           name="start_date"
           type="date"
@@ -80,65 +80,51 @@ export default function TransactionList({ onEdit }) {
       </div>
 
       {/* Transactions Table */}
-      <table
-        className="transaction-table"
-        style={{ width: '100%', borderCollapse: 'collapse' }}
-      >
-        <thead>
-          <tr style={{ background: '#f2f2f2' }}>
-            <th>Title</th>
-            <th>Amount</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((txn) => (
-            <tr key={txn.id}>
-              <td>{txn.title}</td>
-              <td>₹{txn.amount}</td>
-              <td>{txn.type}</td>
-              <td>{txn.category}</td>
-              <td>{txn.date}</td>
-              <td>
-                <FiEdit
-                  onClick={() => onEdit(txn)}
-                  style={{ cursor: 'pointer', marginRight: '10px' }}
-                  title="Edit"
-                />
-                <FiTrash
-                  onClick={() => handleDelete(txn.id)}
-                  style={{ cursor: 'pointer', color: 'red' }}
-                  title="Delete"
-                />
-              </td>
+      <div className="table-scroll">
+        <table className="transaction-table">
+          <thead>
+            <tr style={{ background: '#f2f2f2' }}>
+              <th>Title</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {transactions.map((txn) => (
+              <tr key={txn.id}>
+                <td>{txn.title}</td>
+                <td>₹{txn.amount}</td>
+                <td>{txn.type}</td>
+                <td>{txn.category}</td>
+                <td>{txn.date}</td>
+                <td>
+                  <FiEdit
+                    onClick={() => onEdit(txn)}
+                    style={{ cursor: 'pointer', marginRight: '10px' }}
+                    title="Edit"
+                  />
+                  <FiTrash
+                    onClick={() => handleDelete(txn.id)}
+                    style={{ cursor: 'pointer', color: 'red' }}
+                    title="Delete"
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Pagination */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '10px',
-          marginTop: '20px',
-        }}
-      >
+      <div className="pagination-buttons">
         <button
           onClick={() => loadTransactions(page - 1)}
           disabled={page <= 1}
-          style={{
-            border: 'none',
-            background: 'transparent',
-            cursor: 'pointer',
-            color: 'black',
-            width: 'auto',
-          }}
           title="Previous Page"
+          className="pag-btn"
         >
           <FiChevronLeft size={24} />
         </button>
@@ -148,13 +134,7 @@ export default function TransactionList({ onEdit }) {
         <button
           onClick={() => loadTransactions(page + 1)}
           disabled={page >= totalPages}
-          style={{
-            border: 'none',
-            background: 'transparent',
-            cursor: 'pointer',
-            color: 'black',
-            width: 'auto',
-          }}
+          className="pag-btn"
           title="Next Page"
         >
           <FiChevronRight size={24} />
