@@ -11,32 +11,29 @@ export default function Dashboard() {
   const reloadTransactions = () => setRefreshKey((prev) => prev + 1);
 
   return (
-    <>
-      <div className="navbar">Personal Budget Tracker</div>
+    <div className="dashboard-container">
+      <div className="summary">
+        <FinancialSummary key={refreshKey} />
+        <BudgetForm onSuccess={reloadTransactions} />
+      </div>
 
-      <div className="dashboard-container">
-        <div className="summary">
-          <FinancialSummary />
-          <BudgetForm />
+      <div className="dashboard-body">
+        <div className="dashboard-left section">
+          <TransactionList
+            key={refreshKey}
+            onEdit={(txn) => setEditTxn(txn)}
+            onSuccess={reloadTransactions}
+          />
         </div>
 
-        <div className="dashboard-body">
-          <div className="dashboard-left section">
-            <TransactionList
-              key={refreshKey}
-              onEdit={(txn) => setEditTxn(txn)}
-            />
-          </div>
-
-          <div className="dashboard-right">
-            <TransactionForm
-              editingTransaction={editTxn}
-              onClearEdit={() => setEditTxn(null)}
-              onSuccess={reloadTransactions}
-            />
-          </div>
+        <div className="dashboard-right">
+          <TransactionForm
+            editingTransaction={editTxn}
+            onClearEdit={() => setEditTxn(null)}
+            onSuccess={reloadTransactions}
+          />
         </div>
       </div>
-    </>
+    </div>
   );
 }

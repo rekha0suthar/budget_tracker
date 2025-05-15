@@ -1,51 +1,163 @@
-/* App.css */
+/* ========================== */
+/* Root Variables */
+/* ========================== */
+:root {
+  --primary-color: #003366;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --text-dark: #333;
+  --border-color: #ccc;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --transition-fast: 0.2s ease-in-out;
+  --radius: 8px;
+}
+
+/* ========================== */
+/* Base Styles */
+/* ========================== */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f8f9fa;
+  background-color: var(--bg-light);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-.container {
-  max-width: 720px;
-  /* margin: 40px auto; */
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+h2,
+h3 {
+  margin-top: 0;
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 20px;
 }
 
+/* ========================== */
+/* Utility Classes */
+/* ========================== */
 .mt-auto {
   margin: 40px auto;
 }
-
-h2 {
-  text-align: center;
+.mb-20 {
   margin-bottom: 20px;
-  color: #333;
+}
+.margin {
+  margin-top: 10px;
+  margin-bottom: 20px !important;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
 }
 
-h2,
-h3 {
-  margin-top: 0px;
+/* ========================== */
+/* Container and Layout */
+/* ========================== */
+.container {
+  max-width: 720px;
+  padding: 20px;
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
+.dashboard-container {
+  max-width: 1300px;
+  margin: 100px auto;
+  padding: 20px;
+}
+
+.dashboard-body {
+  display: flex;
+  gap: 30px;
+}
+
+.dashboard-left {
+  flex: 2;
+}
+.dashboard-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  background: var(--bg-white);
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+}
+
+.summary {
+  display: flex;
+  gap: 30px;
+}
+
+.finance-container {
+  display: flex;
+  gap: 100px;
+}
+
+/* ========================== */
+/* Navbar */
+/* ========================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  color: var(--primary-color);
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 32px;
+  width: auto;
+}
+
+.app-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ========================== */
+/* Forms and Inputs */
+/* ========================== */
 input,
 select {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 1rem;
   box-sizing: border-box;
   outline: none;
+  background-color: #ffffff;
 }
 
 button {
-  background-color: #007bff;
+  background-color: var(--accent-color);
   color: white;
   padding: 12px;
   border: none;
@@ -55,158 +167,28 @@ button {
   cursor: pointer;
   font-size: 16px;
   margin-bottom: 10px;
+  transition: background-color var(--transition-fast);
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-hover);
 }
 
-.transaction-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 30px;
-}
-
-.transaction-item {
-  display: flex;
-  justify-content: space-between;
-  background: #ffffff;
-  border: 1px solid #e2e2e2;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.transaction-item p {
-  margin: 4px 0;
-}
-
-.transaction-item button {
-  background: transparent;
-  color: red;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Budget section */
-.budget-section {
-  margin-bottom: 40px;
-}
-
-/* Navbar */
-.navbar {
-  background-color: #007bff;
-  color: white;
-  padding: 15px 30px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-/* Main Dashboard Container */
-.dashboard-container {
-  max-width: 1300px;
-  margin: 20px auto;
-  padding: 20px;
-}
-
-.summary {
-  display: flex;
-  gap: 30px;
-}
-
-/* Section Wrapper */
-.section {
-  background: white;
-  padding: 20px;
-  margin-bottom: 25px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  max-width: 800px;
-}
-
-/* Flex Layout for Main Body */
-.dashboard-body {
-  display: flex;
-  gap: 30px;
-  /* align-items: flex-start; */
-}
-
-/* Left: Table | Right: Forms */
-.dashboard-left {
-  flex: 2;
-}
-
-.dashboard-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.table-scroll {
-  width: 100%;
-  overflow-x: auto;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: white;
-}
-
-.transaction-table th,
-.transaction-table td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-
-.transaction-table tr:hover {
-  background-color: #f9f9f9;
-}
-
-.chart-container {
-  margin-top: 30px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.budget {
-  margin-top: 20px;
-  font-size: 20px;
-}
-
-.finance-container {
-  display: flex;
-  gap: 100px;
-}
-
-.mb-20 {
-  margin-bottom: 20px;
-}
-
-/* Parent container - for padding or background */
+/* ========================== */
+/* Table Styles */
+/* ========================== */
 .table-wrapper {
   width: 100%;
 }
 
-.margin {
-  margin-top: 10px;
-  margin-bottom: 20px !important;
-}
-
-/* Scroll only the table, not the whole wrapper */
 .table-scroll {
   width: 100%;
   overflow-x: auto;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: white;
+  border-radius: var(--radius);
+  background-color: var(--bg-white);
 }
 
-/* Table stays wide, triggers scroll only inside .table-scroll */
 .transaction-table {
   min-width: 700px;
   width: 100%;
@@ -216,7 +198,7 @@ button:hover {
 .transaction-table th,
 .transaction-table td {
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   white-space: nowrap;
   text-align: center;
 }
@@ -230,6 +212,9 @@ button:hover {
   gap: 10px;
 }
 
+/* ========================== */
+/* Pagination */
+/* ========================== */
 .pagination-buttons {
   display: flex;
   justify-content: center;
@@ -237,11 +222,27 @@ button:hover {
 }
 
 .pag-btn {
-  color: black !important;
-  cursor: pointer;
-  background: transparent;
-  width: auto;
+  background: transparent !important;
   border: none;
+  color: black;
+  cursor: pointer;
+  width: auto;
+}
+
+/* ========================== */
+/* Charts and Visuals */
+/* ========================== */
+.chart-container {
+  margin-top: 30px;
+  background: var(--bg-white);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.budget {
+  margin-top: 20px;
+  font-size: 20px;
 }
 
 .finance-container svg {
@@ -251,23 +252,87 @@ button:hover {
   display: block;
 }
 
+/* ========================== */
+/* Login */
+/* ========================== */
+.login-container {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f8fc;
+}
+
+.login-form {
+  background: var(--bg-white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-width: 320px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.login-form input {
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.login-form button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.login-form button:hover {
+  background-color: var(--accent-hover);
+}
+
+.logout-btn {
+  background: transparent;
+  width: auto;
+  color: black;
+  cursor: pointer;
+  padding: 6px;
+  transition: color var(--transition-fast);
+  margin-right: 50px;
+  margin-top: 10px;
+}
+
+.logout-btn:hover {
+  background: transparent;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* ========================== */
 /* Responsive */
+/* ========================== */
 @media (max-width: 900px) {
-  .dashboard-body {
-    flex-direction: column;
-  }
-
-  .finance-container {
-    flex-direction: column;
-  }
-
-  .summary {
-    flex-direction: column;
-  }
-
+  .dashboard-body,
+  .finance-container,
+  .summary,
   .transaction-filter-group {
     flex-direction: column;
-    gap: 10px;
   }
 
   .transaction-table th,
@@ -281,6 +346,6 @@ button:hover {
   }
 
   .navbar {
-    font-size: 20px;
+    font-size: 18px;
   }
 }

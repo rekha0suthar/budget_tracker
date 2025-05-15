@@ -93,6 +93,11 @@ export const updateBudget = async (month, data) => {
   return response.data;
 };
 
+export const fetchSummary = async () => {
+  const response = await API.get('/summary/');
+  return response.data;
+};
+
 export const loginUser = async (credentials) => {
   const response = await API.post('/token/', credentials);
   localStorage.setItem('access', response.data.access);

@@ -16,7 +16,7 @@ const months = [
   'December',
 ];
 
-const BudgetForm = () => {
+const BudgetForm = ({ onSuccess }) => {
   const [month, setMonth] = useState(() =>
     new Date().toISOString().slice(0, 7)
   );
@@ -40,6 +40,7 @@ const BudgetForm = () => {
     try {
       await updateBudget(month, { month, amount: Number(budget) });
       alert('Budget updated');
+      onSuccess();
     } catch (err) {
       console.error('Failed to update budget', err);
     }
@@ -50,7 +51,7 @@ const BudgetForm = () => {
   }, [month]);
 
   return (
-    <div className="section">
+    <div className="section flex-1">
       <h3>Set Monthly Budget</h3>
       <form onSubmit={handleUpdateBudget}>
         <input
