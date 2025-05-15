@@ -19,8 +19,8 @@ const PieChartSummary = ({ summary }) => {
 
     if (data.length === 0) return;
 
-    const width = 600;
-    const height = 600;
+    const width = 350;
+    const height = 200;
     const radius = Math.min(width, height) / 2;
     const total = data.reduce((acc, d) => acc + d.value, 0);
 
@@ -57,8 +57,8 @@ const PieChartSummary = ({ summary }) => {
       .append('text')
       .attr('transform', (d) => `translate(${arcGen.centroid(d)})`)
       .attr('text-anchor', 'middle')
-      .attr('font-size', '20px') // Increased from 12px to 14px
-      .attr('font-weight', '600') //  Make bolder
+      .attr('font-size', '14px')
+      .attr('font-weight', '600')
       .text((d) => {
         const percent = ((d.data.value / total) * 100).toFixed(1);
         return `${d.data.label} (₹${d.data.value}, ${percent}%)`;

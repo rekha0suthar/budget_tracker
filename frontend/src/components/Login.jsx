@@ -32,7 +32,6 @@ const LoginPage = () => {
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
-        {error && <p className="error">{error}</p>}
         <input
           type="text"
           placeholder="Username"
@@ -47,6 +46,7 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {error && <p className="error">{error}</p>}
 
         <button type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}

@@ -37,26 +37,20 @@ const FinancialSummary = () => {
   }, []);
 
   return (
-    <div className="section flex-2">
+    <div className="flex-2">
       {loading ? (
         <div style={{ textAlign: 'center', marginTop: 40 }}>
           <div className="spinner"></div>
           <p>Loading charts...</p>
         </div>
       ) : (
-        <div className="finance-container">
-          <div>
-            <h3 className="mb-20">Income vs Expenses vs Balance</h3>
-            {summary.income === 0 && summary.expense === 0 ? (
-              <p style={{ textAlign: 'center', marginTop: 20, color: '#888' }}>
-                No data available to show charts.
-              </p>
-            ) : (
-              <PieChartSummary summary={summary} />
-            )}
+        <div className="bento-grid">
+          <div className="bento-card">
+            <h3>Income vs Expenses vs Balance</h3>
+            <PieChartSummary summary={summary} />
           </div>
-          <div>
-            <h3 className="mb-20">Monthly Budget vs Expenses</h3>
+          <div className="bento-card">
+            <h3>Monthly Budget vs Expenses</h3>
             <BarChartBudget budget={budget} expense={summary.expense} />
           </div>
         </div>
