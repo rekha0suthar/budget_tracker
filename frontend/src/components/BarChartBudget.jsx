@@ -6,13 +6,13 @@ const BarChartBudget = ({ budget, expense }) => {
 
   useEffect(() => {
     const data = [
-      { label: 'Budget', value: budget, color: '#3498db' },
+      { label: 'Budget', value: budget, color: '#0056b3' },
       { label: 'Expenses', value: expense, color: '#e74c3c' },
     ];
 
     const width = 350;
     const height = 200;
-    const margin = { top: 20, right: 30, bottom: 40, left: 60 };
+    const margin = { top: 30, right: 30, bottom: 20, left: 60 };
 
     const svg = select(barRef.current);
     svg.selectAll('*').remove();
@@ -45,14 +45,13 @@ const BarChartBudget = ({ budget, expense }) => {
           .tickFormat((d) => `₹${d}`)
       )
       .selectAll('text')
-      .style('font-size', '14px');
+      .style('font-size', '12px');
 
     g.append('g')
       .attr('transform', `translate(0, ${chartHeight})`)
       .call(axisBottom(x))
       .selectAll('text') // ← Select axis label text
-      .style('font-size', '14px') // ← Increase font size
-      .style('font-weight', '600'); // ← Optional: bold
+      .style('font-size', '12px'); // ← Increase font size
 
     g.selectAll('rect')
       .data(data)
@@ -72,8 +71,7 @@ const BarChartBudget = ({ budget, expense }) => {
       .attr('y', (d) => y(d.value) - 8)
       .attr('text-anchor', 'middle')
       .attr('fill', '#333')
-      .attr('font-size', '14px')
-      .attr('font-weight', '600')
+      .attr('font-size', '12px')
       .text((d) => `₹${d.value}`);
   }, [budget, expense]);
 

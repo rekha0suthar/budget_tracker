@@ -57,8 +57,7 @@ const PieChartSummary = ({ summary }) => {
       .append('text')
       .attr('transform', (d) => `translate(${arcGen.centroid(d)})`)
       .attr('text-anchor', 'middle')
-      .attr('font-size', '14px')
-      .attr('font-weight', '600')
+      .attr('font-size', '12px')
       .text((d) => {
         const percent = ((d.data.value / total) * 100).toFixed(1);
         return `${d.data.label} (₹${d.data.value}, ${percent}%)`;

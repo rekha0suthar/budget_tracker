@@ -44,7 +44,7 @@ const BudgetForm = ({ onSuccess }) => {
   };
 
   return (
-    <div className="section bento-card">
+    <div className="section">
       <h3 style={{ marginBottom: '20px' }}>Set Monthly Budget</h3>
       <p className="budget-note">
         Selected Month: <strong>{months[new Date(month).getMonth()]}</strong>{' '}

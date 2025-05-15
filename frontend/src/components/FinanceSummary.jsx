@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import API, { fetchSummary } from '../services/apis';
 import PieChartSummary from './PieChartSummary';
 import BarChartBudget from './BarChartBudget';
+import BudgetForm from './BudgetForm';
 
-const FinancialSummary = () => {
+const FinancialSummary = ({ reloadTransactions }) => {
   const [summary, setSummary] = useState({ income: 0, expense: 0, balance: 0 });
   const [budget, setBudget] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -37,7 +38,7 @@ const FinancialSummary = () => {
   }, []);
 
   return (
-    <div className="flex-2">
+    <div className="mb-30">
       {loading ? (
         <div style={{ textAlign: 'center', marginTop: 40 }}>
           <div className="spinner"></div>
@@ -53,6 +54,7 @@ const FinancialSummary = () => {
             <h3>Monthly Budget vs Expenses</h3>
             <BarChartBudget budget={budget} expense={summary.expense} />
           </div>
+          <BudgetForm onSuccess={reloadTransactions} />
         </div>
       )}
     </div>

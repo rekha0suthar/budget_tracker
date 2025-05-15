@@ -12,9 +12,11 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <div className="summary">
-        <FinancialSummary key={refreshKey} />
-        <BudgetForm onSuccess={reloadTransactions} />
+      <div className="bento-grid">
+        <FinancialSummary
+          key={refreshKey}
+          reloadTransactions={reloadTransactions}
+        />
       </div>
 
       <div className="dashboard-body">
