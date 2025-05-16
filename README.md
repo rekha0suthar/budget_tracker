@@ -7,6 +7,7 @@ Credentials are provided below to test the application. As of now I have set onl
 ---
 
 ## 🔗 Live Demo
+![Screenshot from 2025-05-16 11-32-43](https://github.com/user-attachments/assets/11f9893c-322b-4de8-9e1b-e1d95079b967)
 
 - **Frontend:** [https://finscope-orpin.vercel.app](https://finscope-orpin.vercel.app)
 - **Backend (API):** [https://budjet-tracker.onrender.com](https://budjet-tracker.onrender.com)
