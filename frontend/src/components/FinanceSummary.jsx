@@ -48,13 +48,27 @@ const FinancialSummary = ({ reloadTransactions }) => {
         <div className="bento-grid">
           <div className="bento-card">
             <h3>Income vs Expenses vs Balance</h3>
-            <PieChartSummary summary={summary} />
+            {summary &&
+            (summary.income || summary.expense || summary.balance) ? (
+              <PieChartSummary summary={summary} />
+            ) : (
+              <p className="chart-msg">No data added</p>
+            )}
           </div>
+
           <div className="bento-card">
             <h3>Monthly Budget vs Expenses</h3>
-            <BarChartBudget budget={budget} expense={summary.expense} />
+            {budget || (summary && summary.expense) ? (
+              <BarChartBudget budget={budget} expense={summary.expense} />
+            ) : (
+              <p className="chart-msg">No data added</p>
+            )}
           </div>
-          <BudgetForm onSuccess={reloadTransactions} />
+
+          <div className="bento-card">
+            <h3>Set Your Monthly Budget</h3>
+            <BudgetForm onSuccess={reloadTransactions} />
+          </div>
         </div>
       )}
     </div>
