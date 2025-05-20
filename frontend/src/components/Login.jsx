@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login, loginAsGuest } = useAuth();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +17,26 @@ const LoginPage = () => {
       setLoading(true);
       setError('');
       const { access } = await loginUser({ username, password });
+
+      login(access);
+      navigate('/dashboard');
+    } catch (error) {
+      setError('Invalid username or password');
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGuestLogin = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      setError('');
+      const { access } = await loginUser({
+        username: 'guestuser',
+        password: 'guestpass123',
+      });
 
       login(access);
       navigate('/dashboard');
@@ -51,7 +71,7 @@ const LoginPage = () => {
         <button type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
         </button>
-        <button type="button" onClick={loginAsGuest}>
+        <button type="button" onClick={handleGuestLogin}>
           Continue as Guest
         </button>
 
