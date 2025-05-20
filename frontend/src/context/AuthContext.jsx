@@ -19,13 +19,17 @@ export const AuthProvider = ({ children }) => {
     setToken(accessToken);
   };
 
+  const loginAsGuest = () => login('guestuser', 'guestpass123');
+
   const logout = () => {
     localStorage.clear();
     setToken(null);
   };
 
   return (
-    <AuthContext.Provider value={{ token, login, loading, logout }}>
+    <AuthContext.Provider
+      value={{ token, login, loading, logout, loginAsGuest }}
+    >
       {children}
     </AuthContext.Provider>
   );

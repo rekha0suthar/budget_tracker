@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, loginAsGuest } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +50,9 @@ const LoginPage = () => {
 
         <button type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
+        </button>
+        <button type="button" onClick={loginAsGuest}>
+          Continue as Guest
         </button>
 
         {loading && <div className="spinner"></div>}
